@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Job Application Tracker</title>
+  <style>
+    body {
+      width: 500px;
+      padding: 15px;
+      font-family: Arial, sans-serif;
+    }
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+      background: #f5f5f5;
+      padding: 10px;
+      border-radius: 4px;
+    }
+    .stat-item {
+      text-align: center;
+    }
+    .stat-number {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #2196F3;
+    }
+    .application-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .application-list {
+      max-height: 400px;
+      overflow-y: auto;
+    }
+    .application-item {
+      padding: 10px;
+      border: 1px solid #ccc;
+      margin: 5px 0;
+      border-radius: 4px;
+      position: relative;
+    }
+    .auto-detected {
+      background-color: #e3f2fd;
+    }
+    .delete-btn {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      color: red;
+      cursor: pointer;
+    }
+    .filters {
+      margin-bottom: 15px;
+      display: flex;
+      gap: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Job Application Tracker</h2>
+  
+  <div class="stats">
+    <div class="stat-item">
+      <div class="stat-number" id="totalApplications">0</div>
+      <div>Total Applications</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number" id="activeApplications">0</div>
+      <div>Active</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number" id="responseRate">0%</div>
+      <div>Response Rate</div>
+    </div>
+  </div>
+
+  <div class="filters">
+    <select id="sourceFilter">
+      <option value="">All Sources</option>
+      <option value="linkedin.com">LinkedIn</option>
+      <option value="indeed.com">Indeed</option>
+      <option value="glassdoor.com">Glassdoor</option>
+      <option value="greenhouse.io">Greenhouse</option>
+      <option value="lever.co">Lever</option>
+    </select>
+    <select id="statusFilter">
+      <option value="">All Statuses</option>
+      <option value="applied">Applied</option>
+      <option value="interviewing">Interviewing</option>
+      <option value="offered">Offered</option>
+      <option value="rejected">Rejected</option>
+    </select>
+  </div>
+
+  <div class="application-form">
+    <input type="text" id="companyName" placeholder="Company Name">
+    <input type="text" id="position" placeholder="Position">
+    <input type="text" id="applicationUrl" placeholder="Application URL">
+    <select id="status">
+      <option value="applied">Applied</option>
+      <option value="interviewing">Interviewing</option>
+      <option value="offered">Offered</option>
+      <option value="rejected">Rejected</option>
+    </select>
+    <textarea id="notes" placeholder="Notes"></textarea>
+    <button id="addApplication">Add Manual Application</button>
+  </div>
+
+  <div class="application-list" id="applicationList"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
